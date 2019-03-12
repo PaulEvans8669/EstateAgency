@@ -169,10 +169,18 @@
       <DependentUpon>20190306161216_InitMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EstateDbContextModelSnapshot.cs" />
+    <Compile Include="ModelView\BaseCommand.cs" />
+    <Compile Include="ModelView\ViewModelAdd.cs" />
+    <Compile Include="ModelView\ViewModelHomePage.cs" />
+    <Compile Include="Model\Enums\addEstateEnum.cs" />
     <Compile Include="Model\Enums\ContractType.cs" />
     <Compile Include="Model\Enums\EstateType.cs" />
     <Compile Include="Model\Enums\Quality.cs" />
     <Compile Include="Tools\BaseNotifyPropertyChanged.cs" />
+    <Page Include="View\AddEstateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -180,6 +188,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\AddEstateWindow.xaml.cs">
+      <DependentUpon>AddEstateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -217,9 +228,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ModelView\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

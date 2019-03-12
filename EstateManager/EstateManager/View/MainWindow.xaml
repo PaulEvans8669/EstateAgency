@@ -4,8 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EstateManager"
+        xmlns:VM="clr-namespace:EstateManager.ModelView"
         mc:Ignorable="d"
-        Title="MainWindow" Height="auto" Width="auto">
+        Title="HomePage" Height="auto" Width="auto">
+
+    <Window.DataContext>
+        <VM:ViewModelHomePage/>
+    </Window.DataContext>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -17,7 +23,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <ListBox Grid.Row="0" VerticalAlignment="Stretch"/>
-            <Button Grid.Row="1" Content="Add Estate"/>
+            <Button Command="{Binding addEstateCommand}" Grid.Row="1" Content="Add Estate"/>
         </Grid>
         <Grid Grid.Column="1" Background="Red">
 
