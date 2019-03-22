@@ -14,29 +14,29 @@ namespace EstateManager.Model
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id
         {
-            get { return (int)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<int>(); }
+            set { SetProperty(value); }
         }
         public int EstateId
         {
-            get { return (int)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<int>(); }
+            set { SetProperty(value); }
         }
         [ForeignKey(nameof(EstateId))]
         public Estate Estate
         {
-            get { return (Estate)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<Estate>(); }
+            set { SetProperty(value); }
         }
         public string Title
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
         public string Content
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
     }
 }

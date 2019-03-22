@@ -15,63 +15,68 @@ namespace EstateManager.Model
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id
         {
-            get { return (int)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<int>(); }
+            set { SetProperty(value); }
         }
         public Quality Quality
         {
-            get { return (Quality)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<Quality>(); }
+            set { SetProperty(value); }
         }
         public string Name
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
         public string FirstName
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
         public string Address
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
         public string Zip
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
         public string City
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
         public double ? Latitude
         {
-            get { return (double)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<double>(); }
+            set { SetProperty(value); }
         }
         public double ? Longitude
         {
-            get { return (double)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<double>(); }
+            set { SetProperty(value); }
         }
         public string Phone
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
         public string CellPhone
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
         public string Mail
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
+        }
+
+        public override string ToString()
+        {
+            return Id + " " + FirstName + " " + Name;
         }
     }
 }

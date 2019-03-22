@@ -18,6 +18,7 @@ namespace EstateManager
         {
             base.OnStartup(e);
             await EstateDbContext.Initialize();
+
             /*
             var p = new Model.Photo()
             {
@@ -25,8 +26,8 @@ namespace EstateManager
                 Content = "Content 1"
             };
             EstateDbContext.Current.Add(p); //sauvegarde en cache
-            EstateDbContext.Current.SaveChanges(); //sauvegarde ds données en cache dans le fichier
 
+            EstateDbContext.Current.SaveChanges(); //sauvegarde ds données en cache dans le fichier
             var monBien = EstateDbContext.Current.Estate
                 .Where(estate => estate.City == "LYON" && ... || ...)
                 .Include(estate => estate.Contracts).ThenInclude(contract => contract.Estate)
@@ -37,6 +38,7 @@ namespace EstateManager
                 .first(); //requete SQL .ToList()
 
             */
+
         }
     }
 }

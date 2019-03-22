@@ -3,50 +3,84 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace EstateManager.Tools
 {
     public abstract class BaseNotifyPropertyChanged : INotifyPropertyChanged
     {
 
-        #region INotifyPropertyChanged
-
         public event PropertyChangedEventHandler PropertyChanged;
-        private Dictionary<string, object> _values = new Dictionary<string, object>();
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-        protected object GetField([CallerMemberName] string propertyName = null)
-        {
-            if (_values.ContainsKey(propertyName)) return _values[propertyName];
-            return null;
-        }
-        protected bool SetField<T>(T value, [CallerMemberName] string propertyName = null)
-        {
-            T field = default(T);
 
-            if (_values.ContainsKey(propertyName))
-            {
-                field = (T)_values[propertyName];
-                _values[propertyName] = value;
-            }
-            else
-            {
-                _values.Add(propertyName, value);
-            }
+        private Dictionary<string, object> _propertyValues;
 
-            return SetField(ref field, value, propertyName);
+
+        public BaseNotifyPropertyChanged()
+        {
+            _propertyValues = new Dictionary<string, object>();
         }
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+
+        protected Commands.Command GetCommand(Action execute,
+                                              Func<bool> canExecute = null,
+                                              [CallerMemberName] string propertyName = null)
+        {
+            if (!_propertyValues.ContainsKey(propertyName)) _propertyValues[propertyName] = new Commands.Command(execute, canExecute);
+            return (Commands.Command)_propertyValues[propertyName];
+        }
+        protected Commands.Command<T> GetCommand<T>(Action<T> execute,
+                                                    Func<T, bool> canExecute = null,
+                                                    [CallerMemberName] string propertyName = null)
+        {
+            if (!_propertyValues.ContainsKey(propertyName)) _propertyValues[propertyName] = new Commands.Command<T>(execute, canExecute);
+            return (Commands.Command<T>)_propertyValues[propertyName];
+        }
+        protected Commands.AsyncCommand GetCommand(Func<Task> execute,
+                                                   Func<bool> canExecute = null,
+                                                   [CallerMemberName] string propertyName = null)
+        {
+            if (!_propertyValues.ContainsKey(propertyName)) _propertyValues[propertyName] = new Commands.AsyncCommand(execute, canExecute);
+            return (Commands.AsyncCommand)_propertyValues[propertyName];
+        }
+        protected Commands.AsyncCommand<T> GetCommand<T>(Func<T, Task> execute,
+                                                         Func<T, bool> canExecute = null,
+                                                         [CallerMemberName] string propertyName = null)
+        {
+            if (!_propertyValues.ContainsKey(propertyName)) _propertyValues[propertyName] = new Commands.AsyncCommand<T>(execute, canExecute);
+            return (Commands.AsyncCommand<T>)_propertyValues[propertyName];
+        }
+
+        protected virtual T GetProperty<T>([CallerMemberName] string propertyName = null)
+        {
+            if (_propertyValues.ContainsKey(propertyName)) return (T)_propertyValues[propertyName];
+            return default(T);
+        }
+        protected bool SetProperty<T>(T newValue, [CallerMemberName] string propertyName = null)
+        {
+            var current = GetProperty<T>(propertyName);
+
+            if (EqualityComparer<T>.Default.Equals(current, newValue))
+                return false;
+
+            _propertyValues[propertyName] = newValue;
+            OnPropertyChanged(propertyName);
+
+            return true;
+        }
+        protected virtual bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+
             field = value;
             OnPropertyChanged(propertyName);
+
             return true;
         }
 
-        #endregion
+
+        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
 }
