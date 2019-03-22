@@ -176,10 +176,17 @@
       <DependentUpon>20190306161216_InitMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EstateDbContextModelSnapshot.cs" />
+    <Compile Include="ViewModel\BaseCommand.cs" />
+    <Compile Include="ViewModel\ViewModelAdd.cs" />
+    <Compile Include="Model\Enums\addEstateEnum.cs" />
     <Compile Include="Model\Enums\ContractType.cs" />
     <Compile Include="Model\Enums\EstateType.cs" />
     <Compile Include="Model\Enums\Quality.cs" />
     <Compile Include="Tools\BaseNotifyPropertyChanged.cs" />
+    <Page Include="View\AddEstateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
