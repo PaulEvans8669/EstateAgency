@@ -24,34 +24,34 @@ namespace EstateManager.ModelView
 
         public string PropertyName
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
 
         private string _textIn;
 
         public string TextIn
         {
-            get { return (string)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<string>(); }
+            set { SetProperty(value); }
         }
 
         public Visibility CloseButtonVisibility
         {
-            get { return (Visibility)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<Visibility>(); }
+            set { SetProperty(value); }
         }
 
         public Visibility DatePickerVisibility
         {
-            get { return (Visibility)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<Visibility>(); }
+            set { SetProperty(value); }
         }
 
         public Visibility TextInVisibility
         {
-            get { return (Visibility)GetField(); }
-            set { SetField(value); }
+            get { return GetProperty<Visibility>(); }
+            set { SetProperty(value); }
         }
 
         public ViewModelAdd(Type t)
