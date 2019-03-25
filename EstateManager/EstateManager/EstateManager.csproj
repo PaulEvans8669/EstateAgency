@@ -189,11 +189,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EstatesPage.xaml">
+    <Page Include="View\EstatesUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EstatesUserControl.xaml">
+    <Page Include="View\GlobalMapUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,12 +205,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\ViewModelHomePage.cs" />
-    <Compile Include="View\EstatesPage.xaml.cs">
-      <DependentUpon>EstatesPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModel\ViewModelGlobalMap.cs" />
+    <Compile Include="ViewModel\ViewModelEstates.cs" />
     <Compile Include="View\EstatesUserControl.xaml.cs">
       <DependentUpon>EstatesUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GlobalMapUserControl.xaml.cs">
+      <DependentUpon>GlobalMapUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

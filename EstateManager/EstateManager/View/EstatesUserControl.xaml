@@ -132,9 +132,7 @@
                 </ListView>
                 <Button Grid.Row="1" Content="Add Estate" Style="{StaticResource GenericButton}" Height="25"/>
             </Grid>
-            <Grid Grid.Column="1" Background="Red" d:IsHidden="True"/>
-            <!--Alterner entre visibility hidden et visible pour faire afficher le graph qui est derrière-->
-            <Grid Grid.Column="1" Background="White" Visibility="Visible">
+            <Grid Grid.Column="1" Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="63*"/>
                     <RowDefinition Height="142*"/>
@@ -257,6 +255,9 @@
                         <m:Map x:Name="map" CredentialsProvider="AlpXJ0FK_w6N1tO41ijywkJeBxq80VwpNSUhW5BOw3vOfSsQyMkyLYmRg2dpiaPL" ZoomLevel="15"/>
                     </Grid>
                 </Grid>
+            </Grid>
+            <Grid Grid.Column="1" Background="White" Visibility="{Binding isEstateSelected}">
+                <Label Content="Please select an estate available in the list." HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>

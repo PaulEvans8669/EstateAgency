@@ -14,7 +14,7 @@
             <v:EstatesUserControl />
         </TabItem>
         <TabItem Header="Global Map">
-
+            <v:GlobalMapUserControl />
         </TabItem>
         <TabItem Header="Statistics">
             

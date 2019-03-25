@@ -16,14 +16,14 @@ using System.Windows.Shapes;
 namespace EstateManager.View
 {
     /// <summary>
-    /// Logique d'interaction pour EstatesUserControl.xaml
+    /// Logique d'interaction pour GlobalMapUserControl.xaml
     /// </summary>
-    public partial class EstatesUserControl : UserControl
+    public partial class GlobalMapUserControl : UserControl
     {
-        public EstatesUserControl()
+        public GlobalMapUserControl()
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.ViewModelEstates(map);
+            this.DataContext = new ViewModel.ViewModelGlobalMap(globalMap);
         }
     }
 }
