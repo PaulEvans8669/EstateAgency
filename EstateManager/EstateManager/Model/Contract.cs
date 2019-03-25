@@ -13,6 +13,7 @@ namespace EstateManager.Model
 {
     public class Contract : BaseNotifyPropertyChanged
     {
+        internal object pubDate;
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id

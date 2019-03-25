@@ -39,6 +39,12 @@
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Data.Sqlite, Version=2.2.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.Sqlite.Core.2.2.2\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
     </Reference>
@@ -185,11 +191,11 @@
     <Compile Include="Model\Enums\EstateType.cs" />
     <Compile Include="Model\Enums\Quality.cs" />
     <Compile Include="Tools\BaseNotifyPropertyChanged.cs" />
+    <Compile Include="ViewModel\ViewModelStats.cs" />
+    <Compile Include="View\StatsUserControl.xaml.cs">
+      <DependentUpon>StatsUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\AddEstateWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\EstatesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,9 +212,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\ViewModelHomePage.cs" />
-    <Compile Include="View\EstatesPage.xaml.cs">
-      <DependentUpon>EstatesPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\EstatesUserControl.xaml.cs">
       <DependentUpon>EstatesUserControl.xaml</DependentUpon>
     </Compile>
@@ -216,6 +219,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\StatsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Contract.cs" />
