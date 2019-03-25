@@ -8,11 +8,15 @@ using System.Windows.Input;
 using EstateManager.DataAccess;
 using EstateManager.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Maps.MapControl.WPF;
 
 namespace EstateManager.ViewModel
 {
     class ViewModelHomePage
     {
+        private Map map;
+        private Pushpin pin;
+
         private Estate selectedEstate;
         public Estate SelectedEstate {
             get
@@ -24,7 +28,6 @@ namespace EstateManager.ViewModel
                 loadEstateByIdAsync(value.Id);
             }
         }
-        public string MapCenterPoint { get; set; }
 
         public ObservableCollection<Estate> EstateList { get; set; }
 
@@ -34,8 +37,12 @@ namespace EstateManager.ViewModel
                    .Where(estate => estate.Id == id)
                    .FirstOrDefaultAsync();
             Console.WriteLine(selectedEstate.ToString());
-            MapCenterPoint = selectedEstate.Latitude.ToString() + "," + selectedEstate.Longitude.ToString();
-            System.Windows.MessageBox.Show(MapCenterPoint);
+            if (selectedEstate.Latitude != null && selectedEstate.Longitude != null)
+            {
+                Location loc = new Location((double)selectedEstate.Latitude, (double)selectedEstate.Longitude);
+                map.Center = loc;
+                pin.Location = loc;
+            }
         }
 
         private async Task loadEstatesPreviewAsync()
@@ -55,14 +62,15 @@ namespace EstateManager.ViewModel
         }
 
 
-        public ViewModelHomePage()
+        public ViewModelHomePage(Map m)
         {
+            this.map = m;
+            this.pin = new Pushpin();
+
             loadEstatesPreviewAsync();
-            foreach (Estate e in EstateList)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            MapCenterPoint = "46.2,5.2167";
+
+            map.Center = new Location(46.2,5.2167);
+            map.Children.Add(pin);
         }
 
 
