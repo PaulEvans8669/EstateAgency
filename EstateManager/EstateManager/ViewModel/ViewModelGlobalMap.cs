@@ -16,9 +16,7 @@ namespace EstateManager.ViewModel
 {
     class ViewModelGlobalMap
     {
-        private List<Estate> estateList;
-        private List<Person> personList;
-        private List<Pushpin> pinList;
+        
         private Map globalMap;
         public ViewModelGlobalMap(Map map)
         {
@@ -30,7 +28,7 @@ namespace EstateManager.ViewModel
         {
             globalMap.Center = new Location(46.2, 5.2167);
             loadEstatesAsync();
-
+            loadPersonsAsync();
         }
 
         private async Task loadEstatesAsync()
@@ -54,14 +52,48 @@ namespace EstateManager.ViewModel
                         Mouse.OverrideCursor = null;
                     };
                     p.MouseDown += (sender, ea) => {
-                        if(ea.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+                        if(ea.LeftButton == MouseButtonState.Pressed)
                         {
-                            
+                            Console.WriteLine(e.ToString());
                         }
                     };
                     globalMap.Children.Add(p);
                 }
             }
         }
+        private async Task loadPersonsAsync()
+        {
+            List<Person> personList = new List<Person>(
+                await EstateDbContext.Current.Person.ToListAsync()
+                   );
+            foreach (Person pers in personList)
+            {
+                if (pers.Latitude != null && pers.Longitude != null)
+                {
+                    Pushpin p = new Pushpin();
+                    p.Location = new Location(pers.Latitude.Value, pers.Longitude.Value);
+                    ToolTipService.SetToolTip(p, pers.Name + " " + pers.FirstName + "\nClick to go to details.");
+                    p.Background = new SolidColorBrush(Colors.Green);
+                    p.MouseEnter += (sender, ea) =>
+                    {
+                        Mouse.OverrideCursor = Cursors.Hand;
+                    };
+                    p.MouseLeave += (sender, ea) =>
+                    {
+                        Mouse.OverrideCursor = null;
+                    };
+                    p.MouseDown += (sender, ea) => {
+                        if (ea.LeftButton == MouseButtonState.Pressed)
+                        {
+                            Console.WriteLine(pers.ToString());
+                        }
+                    };
+                    globalMap.Children.Add(p);
+                }
+            }
+        }
+
+
+
     }
 }

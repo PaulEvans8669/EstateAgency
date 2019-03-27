@@ -1,5 +1,4 @@
-﻿using EstateManager.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,21 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace EstateManager.View
 {
     /// <summary>
-    /// Logique d'interaction pour EstatesUserControl.xaml
+    /// Logique d'interaction pour PictureEditor.xaml
     /// </summary>
-    public partial class EstatesUserControl : UserControl
+    public partial class PictureEditor : Window
     {
-
-        public EstatesUserControl()
+        public PictureEditor()
         {
             InitializeComponent();
-            this.DataContext = new ViewModelEstates(map);
         }
     }
 }

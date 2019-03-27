@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstateManager.ViewModel
 {
-    public class ViewModelMainWindow
+    class ViewModelEstateEditor
     {
-
     }
 }

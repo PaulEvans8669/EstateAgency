@@ -189,6 +189,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EstateEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EstatesUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,8 +209,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModel\ViewModelEstateEditor.cs" />
     <Compile Include="ViewModel\ViewModelGlobalMap.cs" />
     <Compile Include="ViewModel\ViewModelEstates.cs" />
+    <Compile Include="ViewModel\ViewModelMainWindow.cs" />
+    <Compile Include="View\EstateEditor.xaml.cs">
+      <DependentUpon>EstateEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EstatesUserControl.xaml.cs">
       <DependentUpon>EstatesUserControl.xaml</DependentUpon>
     </Compile>

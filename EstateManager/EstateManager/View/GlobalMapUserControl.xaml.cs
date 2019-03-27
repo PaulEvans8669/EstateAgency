@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EstateManager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace EstateManager.View
     /// </summary>
     public partial class GlobalMapUserControl : UserControl
     {
+
         public GlobalMapUserControl()
         {
             InitializeComponent();
