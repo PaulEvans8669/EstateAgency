@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EstateManager.View"
         mc:Ignorable="d"
-        Title="PictureEditor" Height="450" Width="800">
+        Title="PictureEditor" Height="457.377" Width="700.41">
     <Grid>
-        
+
     </Grid>
 </Window>

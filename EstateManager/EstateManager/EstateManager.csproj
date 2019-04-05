@@ -185,6 +185,9 @@
     <Compile Include="Model\Enums\EstateType.cs" />
     <Compile Include="Model\Enums\Quality.cs" />
     <Compile Include="Tools\BaseNotifyPropertyChanged.cs" />
+    <Compile Include="View\PictureEditor.xaml.cs">
+      <DependentUpon>PictureEditor.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\AddEstateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +229,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\PictureEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Contract.cs" />
