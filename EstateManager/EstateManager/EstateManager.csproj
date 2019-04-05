@@ -179,7 +179,6 @@
     </Compile>
     <Compile Include="Migrations\EstateDbContextModelSnapshot.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
-    <Compile Include="ViewModel\ViewModelAdd.cs" />
     <Compile Include="Model\Enums\addEstateEnum.cs" />
     <Compile Include="Model\Enums\ContractType.cs" />
     <Compile Include="Model\Enums\EstateType.cs" />
@@ -188,10 +187,6 @@
     <Compile Include="View\PictureEditor.xaml.cs">
       <DependentUpon>PictureEditor.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\AddEstateWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\EstateEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
