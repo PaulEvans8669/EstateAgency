@@ -157,6 +157,11 @@ namespace EstateManager.ViewModel
                 .Where(estate => estate.Contracts.Where(c => c.SignDate == null && c.CloseDate == null && c.PubDate != null).Count() > 0)
                 .Count();
 
+            int a = 0;
+
+            var monbien = EstateDbContext.Current.Contract
+                .Where(contract=> contract.EstateId == a);
+
             return nbPublishedContracts;
         }
 
