@@ -103,7 +103,7 @@ namespace EstateManager.ViewModel
         public void addEstate()
         {
             EstateEditor editor = new EstateEditor();
-            ViewModelEstateEditor vmEstateEditor = new ViewModelEstateEditor();
+            ViewModelEstateEditor vmEstateEditor = new ViewModelEstateEditor(editor);
             editor.DataContext = vmEstateEditor;
             editor.ShowDialog();
         }

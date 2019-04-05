@@ -39,6 +39,12 @@
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Data.Sqlite, Version=2.2.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.Sqlite.Core.2.2.2\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
     </Reference>
@@ -178,20 +184,25 @@
       <DependentUpon>20190306161216_InitMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EstateDbContextModelSnapshot.cs" />
+    <Compile Include="Tools\Base64StringToBitmapImageConverter.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
-    <Compile Include="ViewModel\ViewModelAdd.cs" />
     <Compile Include="Model\Enums\addEstateEnum.cs" />
     <Compile Include="Model\Enums\ContractType.cs" />
     <Compile Include="Model\Enums\EstateType.cs" />
     <Compile Include="Model\Enums\Quality.cs" />
     <Compile Include="Tools\BaseNotifyPropertyChanged.cs" />
+    <Compile Include="ViewModel\ViewModelPersonEditor.cs" />
+    <Compile Include="ViewModel\ViewModelPictureEditor.cs" />
+    <Compile Include="ViewModel\ViewModelStats.cs" />
+    <Compile Include="View\PersonEditor.xaml.cs">
+      <DependentUpon>PersonEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PictureEditor.xaml.cs">
       <DependentUpon>PictureEditor.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\AddEstateWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="View\StatsUserControl.xaml.cs">
+      <DependentUpon>StatsUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\EstateEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,9 +240,17 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\PersonEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PictureEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StatsUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -267,7 +286,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\img\defaultPicture.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
