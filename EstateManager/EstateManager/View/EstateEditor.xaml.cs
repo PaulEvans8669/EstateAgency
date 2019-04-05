@@ -22,7 +22,7 @@ namespace EstateManager.View
     {
         public EstateEditor()
         {
-            this.DataContext = new ViewModelEstateEditor();
+            this.DataContext = new ViewModelEstateEditor(this);
             InitializeComponent();
         }
     }
