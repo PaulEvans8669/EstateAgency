@@ -191,9 +191,13 @@
     <Compile Include="Model\Enums\EstateType.cs" />
     <Compile Include="Model\Enums\Quality.cs" />
     <Compile Include="Tools\BaseNotifyPropertyChanged.cs" />
+    <Compile Include="ViewModel\ViewModelContractEditor.cs" />
     <Compile Include="ViewModel\ViewModelPersonEditor.cs" />
     <Compile Include="ViewModel\ViewModelPictureEditor.cs" />
     <Compile Include="ViewModel\ViewModelStats.cs" />
+    <Compile Include="View\ContractEditor.xaml.cs">
+      <DependentUpon>ContractEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PersonEditor.xaml.cs">
       <DependentUpon>PersonEditor.xaml</DependentUpon>
     </Compile>
@@ -203,6 +207,10 @@
     <Compile Include="View\StatsUserControl.xaml.cs">
       <DependentUpon>StatsUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\ContractEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EstateEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -50,6 +50,7 @@ namespace EstateManager.ViewModel
                     }
                     SetProperty(value);
                     isEstateSelected = Visibility.Hidden;
+                    loadContractsAsync();
                 }
                 else
                 {
@@ -58,12 +59,35 @@ namespace EstateManager.ViewModel
             }
         }
 
+        public Contract SelectedContract
+        {
+            get
+            {
+                return GetProperty<Contract>();
+            }
+            set
+            {
+                SetProperty(value);
+            }
+        }
+
         public ObservableCollection<Estate> EstateList { get; set; }
+        public ObservableCollection<Contract> ContractList { get; set; }
+
+
 
         private async Task loadEstatesAsync()
         {
             EstateList = new ObservableCollection<Estate>( 
                 await EstateDbContext.Current.Estate.ToListAsync()
+                   );
+        }
+
+
+        private async Task loadContractsAsync()
+        {
+            ContractList = new ObservableCollection<Contract>(
+                await EstateDbContext.Current.Contract.Where(c => c.EstateId == SelectedEstate.Id).ToListAsync()
                    );
         }
 
@@ -104,6 +128,30 @@ namespace EstateManager.ViewModel
         {
             EstateEditor editor = new EstateEditor();
             ViewModelEstateEditor vmEstateEditor = new ViewModelEstateEditor(editor);
+            editor.DataContext = vmEstateEditor;
+            editor.ShowDialog();
+        }
+
+        public BaseCommand AddContract
+        {
+            get { return new BaseCommand(addContract); }
+        }
+        public void addContract()
+        {
+            ContractEditor editor = new ContractEditor();
+            ViewModelContractEditor vmEstateEditor = new ViewModelContractEditor(SelectedEstate, editor, this);
+            editor.DataContext = vmEstateEditor;
+            editor.ShowDialog();
+        }
+
+        public BaseCommand DelContract
+        {
+            get { return new BaseCommand(delContract); }
+        }
+        public void delContract()
+        {
+            ContractEditor editor = new ContractEditor();
+            ViewModelContractEditor vmEstateEditor = new ViewModelContractEditor(SelectedEstate, editor, this);
             editor.DataContext = vmEstateEditor;
             editor.ShowDialog();
         }

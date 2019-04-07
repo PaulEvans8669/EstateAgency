@@ -87,7 +87,7 @@
                 <ColumnDefinition Width="179*"/>
                 <ColumnDefinition Width="583*"/>
             </Grid.ColumnDefinitions>
-            <Grid>
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
@@ -169,6 +169,31 @@
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Style="{StaticResource EstateButton}" FontSize="35" FontFamily="Wingdings" Content="!"/>
                         <Button Grid.Column="1" Style="{StaticResource EstateButton}" Command="{Binding DeleteEstate}" FontSize="35" FontFamily="Wingdings 2" Content="3"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Espace photos Col 0-->
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="1" Content="+" Style="{StaticResource GenericButton}" Command="{Binding AddContract}"/>
+                            <Button Grid.Row="3" Content="-" Style="{StaticResource GenericButton}" Command="{Binding DelContract}"/>
+                        </Grid>
+                        <ListView Grid.Column="1" Margin="10,10,10,10"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="2" VerticalAlignment="Bottom" Height="286">
@@ -256,7 +281,7 @@
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1" Background="White" Visibility="{Binding isEstateSelected}">
+            <Grid Grid.Column="1" Background="White" Visibility="{Binding isEstateSelected}"><!--{Binding isEstateSelected}-->
                 <Label Content="Please select an estate available in the list." HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Grid>

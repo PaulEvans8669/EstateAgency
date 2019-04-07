@@ -74,7 +74,7 @@
                     <Label Content="Owner :" Grid.Column="0" Grid.Row="0"/>
                     <Button Content="Add Person" Grid.Column="0" Grid.Row="1" Command="{Binding AddPerson}"/>
                 </Grid>
-                <ComboBox Grid.Column="1" Grid.Row="5" SelectedItem="{Binding Owner}"/>
+                <ComboBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding PersonList}" SelectedItem="{Binding Owner}"/>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid>

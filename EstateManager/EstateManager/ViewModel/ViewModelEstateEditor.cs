@@ -3,6 +3,7 @@ using EstateManager.Model;
 using EstateManager.Model.Enums;
 using EstateManager.Tools;
 using EstateManager.View;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,7 @@ namespace EstateManager.ViewModel
 {
     class ViewModelEstateEditor : BaseNotifyPropertyChanged
     {
+        public ObservableCollection<Person> PersonList;
         private EstateEditor editor;
         public EstateType Estate { get { return GetProperty<EstateType>(); } set { SetProperty(value); } }
         public string Address { get { return GetProperty<string>(); } set { SetProperty(value); } }
@@ -42,8 +44,16 @@ namespace EstateManager.ViewModel
 
         public ViewModelEstateEditor(EstateEditor editor)
         {
+            loadPersonAsync();
             PhotoList = new ObservableCollection<Photo>();
             this.editor = editor;
+        }
+
+        public async Task loadPersonAsync()
+        {
+            PersonList = new ObservableCollection<Person>(
+                await EstateDbContext.Current.Person.ToListAsync()
+                   );
         }
 
         public BaseCommand AddPicture
