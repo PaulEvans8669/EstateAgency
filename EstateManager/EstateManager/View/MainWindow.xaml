@@ -10,14 +10,14 @@
         Title="MainWindow" Height="auto" Width="auto" ResizeMode="CanMinimize">
     
     <TabControl Grid.Row="0">
+        <TabItem Header="Statistics">
+            <v:StatsUserControl/>
+        </TabItem>
         <TabItem Header="Estates">
-            <v:EstatesUserControl />
+            <v:EstatesUserControl/>
         </TabItem>
         <TabItem Header="Global Map">
-
-        </TabItem>
-        <TabItem Header="Statistics">
-            
+            <v:GlobalMapUserControl/>
         </TabItem>
     </TabControl>
 </Window>

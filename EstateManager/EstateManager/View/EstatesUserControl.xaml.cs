@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EstateManager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,11 @@ namespace EstateManager.View
     /// </summary>
     public partial class EstatesUserControl : UserControl
     {
+
         public EstatesUserControl()
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.ViewModelHomePage(map);
+            this.DataContext = new ViewModelEstates(map);
         }
     }
 }

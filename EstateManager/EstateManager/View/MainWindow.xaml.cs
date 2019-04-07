@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿using EstateManager.DataAccess;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.IO;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace EstateManager.View
 {
@@ -11,6 +16,8 @@ namespace EstateManager.View
         {
             InitializeComponent();
         }
+
+
 
     }
 }

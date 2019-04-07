@@ -87,7 +87,7 @@
                 <ColumnDefinition Width="179*"/>
                 <ColumnDefinition Width="583*"/>
             </Grid.ColumnDefinitions>
-            <Grid>
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
@@ -100,7 +100,7 @@
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="4*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0"/>
+                                <Image Grid.Column="0" Width="75" Height="75" Margin="0,0,20,0" Source="{Binding MainPhoto.Content, Converter={StaticResource Base64StringToBitmapImageConverter}}"/>
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
@@ -130,11 +130,9 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Grid.Row="1" Content="Add Estate" Style="{StaticResource GenericButton}" Height="25"/>
+                <Button Grid.Row="1" Content="Add Estate" Style="{StaticResource GenericButton}" Command="{Binding AddEstate}" Height="25"/>
             </Grid>
-            <Grid Grid.Column="1" Background="Red" d:IsHidden="True"/>
-            <!--Alterner entre visibility hidden et visible pour faire afficher le graph qui est derrière-->
-            <Grid Grid.Column="1" Background="White" Visibility="Visible">
+            <Grid Grid.Column="1" Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="63*"/>
                     <RowDefinition Height="142*"/>
@@ -169,8 +167,60 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Style="{StaticResource EstateButton}" FontSize="35" FontFamily="Wingdings" Content="!"/>
-                        <Button Grid.Column="1" Style="{StaticResource EstateButton}" FontSize="35" FontFamily="Wingdings 2" Content="3"/>
+                        <Button Grid.Column="0" Style="{StaticResource EstateButton}" Command="{Binding ModifyEstate}" FontSize="35" FontFamily="Wingdings" Content="!"/>
+                        <Button Grid.Column="1" Style="{StaticResource EstateButton}" Command="{Binding DeleteEstate}" FontSize="35" FontFamily="Wingdings 2" Content="3"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="1" Source="{Binding Image}"/>
+                        <Button Grid.Column="0" HorizontalAlignment="Right" Style="{StaticResource GenericButton}" Height="50" Width="50" Content="←" Command="{Binding LeftImage}" />
+                        <Button Grid.Column="2" HorizontalAlignment="Left" Style="{StaticResource GenericButton}" Height="50" Width="50" Content="→" Command="{Binding RightImage}"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="1" Content="+" Style="{StaticResource GenericButton}" Width="20" Command="{Binding AddContract}"/>
+                            <Button Grid.Row="3" Content="-" Style="{StaticResource GenericButton}" Command="{Binding DelContract}"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="Contracts" Style="{StaticResource Title3}"/>
+                            <ListView Grid.Row="1" Margin="10,0,10,10" ItemsSource="{Binding ContractList}" SelectedItem="{Binding SelectedContract}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="{Binding Title}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="2" VerticalAlignment="Bottom" Height="286">
@@ -218,7 +268,7 @@
                                         <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource ElementValue}" Content="{Binding SelectedEstate.Surface}"/>
                                         <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource ElementValue}" Content="{Binding SelectedEstate.RoomsCount}"/>
                                         <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource ElementValue}" Content="{Binding SelectedEstate.BuildDate}"/>
-                                        <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource ElementValue}" Content="{Binding SelectedEstate.FloorCount}"/>
+                                        <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource ElementValue}" Content="{Binding SelectedEstate.FloorsCount}"/>
                                         <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource ElementValue}" Content="{Binding SelectedEstate.FloorNumber}"/>
                                         <Label Grid.Row="5" Grid.Column="1" Style="{StaticResource ElementValue}" Content="{Binding SelectedEstate.EnergyEfficiency}"/>
                                     </Grid>
@@ -257,6 +307,9 @@
                         <m:Map x:Name="map" CredentialsProvider="AlpXJ0FK_w6N1tO41ijywkJeBxq80VwpNSUhW5BOw3vOfSsQyMkyLYmRg2dpiaPL" ZoomLevel="15"/>
                     </Grid>
                 </Grid>
+            </Grid>
+            <Grid Grid.Column="1" Background="White" Visibility="{Binding isEstateSelected}"><!--{Binding isEstateSelected}-->
+                <Label Content="Please select an estate available in the list." HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>
