@@ -14,7 +14,7 @@ namespace EstateManager.ViewModel
 {
     class ViewModelEstateEditor : BaseNotifyPropertyChanged
     {
-        public ObservableCollection<Person> PersonList;
+        public ObservableCollection<Person> PersonList { get; set; }
         private EstateEditor editor;
         public Model.Enums.EstateType Estate { get { return GetProperty<Model.Enums.EstateType>(); } set { SetProperty(value); } }
         public string Address { get { return GetProperty<string>(); } set { SetProperty(value); } }

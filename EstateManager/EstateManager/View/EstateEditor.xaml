@@ -74,7 +74,22 @@
                     <Label Content="Owner :" Grid.Column="0" Grid.Row="0"/>
                     <Button Content="Add Person" Grid.Column="0" Grid.Row="1" Command="{Binding AddPerson}"/>
                 </Grid>
-                <ComboBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding PersonList}" SelectedItem="{Binding Owner}"/>
+                <ComboBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding PersonList}" SelectedItem="{Binding Owner}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="{Binding Quality}"/>
+                                <Label Grid.Column="1" Content="{Binding Name}"/>
+                                <Label Grid.Column="2" Content="{Binding FirstName}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid>
