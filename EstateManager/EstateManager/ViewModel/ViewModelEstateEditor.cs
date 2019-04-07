@@ -1,6 +1,5 @@
 ﻿using EstateManager.DataAccess;
 using EstateManager.Model;
-using EstateManager.Model.Enums;
 using EstateManager.Tools;
 using EstateManager.View;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +16,7 @@ namespace EstateManager.ViewModel
     {
         public ObservableCollection<Person> PersonList;
         private EstateEditor editor;
-        public EstateType Estate { get { return GetProperty<EstateType>(); } set { SetProperty(value); } }
+        public Model.Enums.EstateType Estate { get { return GetProperty<Model.Enums.EstateType>(); } set { SetProperty(value); } }
         public string Address { get { return GetProperty<string>(); } set { SetProperty(value); } }
         public string ZIP { get { return GetProperty<string>(); } set { SetProperty(value); } }
         public string City { get { return GetProperty<string>(); } set { SetProperty(value); } }
@@ -87,11 +86,11 @@ namespace EstateManager.ViewModel
             estate.BuildDate = BuildDate;
             estate.City = City;
             estate.EnergyEfficiency = EnergyEfficiency;
-            estate.FloorCount = FloorCount;
+            estate.FloorsCount = FloorCount;
             estate.FloorNumber = FloorNumber;
             estate.Latitude = Latitude;
             estate.Longitude = Longitude;
-            estate.Owner = Owner;
+            //estate.OwnerId = OwnerId;
             estate.RoomsCount = NbOfRooms;
             estate.Surface = Surface;
             estate.Type = Estate;

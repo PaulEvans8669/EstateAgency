@@ -1,6 +1,5 @@
 ﻿using EstateManager.DataAccess;
 using EstateManager.Model;
-using EstateManager.Model.Enums;
 using EstateManager.Tools;
 using EstateManager.View;
 using System;
@@ -14,7 +13,7 @@ namespace EstateManager.ViewModel
     class ViewModelPersonEditor : BaseNotifyPropertyChanged 
     {
 
-        public Quality Genre { get { return GetProperty<Quality>(); } set { SetProperty(value); } }
+        public Model.Enums.Quality Genre { get { return GetProperty<Model.Enums.Quality>(); } set { SetProperty(value); } }
         public string Name { get { return GetProperty<string>(); } set { SetProperty(value); } }
         public string FirstName { get { return GetProperty<string>(); } set { SetProperty(value); } }
         public string Address { get { return GetProperty<string>(); } set { SetProperty(value); } }

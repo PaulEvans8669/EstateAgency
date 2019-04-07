@@ -179,17 +179,22 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="DataAccess\EstateDbContext.cs" />
     <Compile Include="DataAccess\EstateDbContextFactory.cs" />
-    <Compile Include="Migrations\20190306161216_InitMigration.cs" />
-    <Compile Include="Migrations\20190306161216_InitMigration.designer.cs">
-      <DependentUpon>20190306161216_InitMigration.cs</DependentUpon>
+    <Compile Include="Migrations\20190407130948_test.cs" />
+    <Compile Include="Migrations\20190407130948_test.designer.cs">
+      <DependentUpon>20190407130948_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EstateDbContextModelSnapshot.cs" />
-    <Compile Include="Tools\Base64StringToBitmapImageConverter.cs" />
-    <Compile Include="ViewModel\BaseCommand.cs" />
+    <Compile Include="Model\Contract.cs" />
     <Compile Include="Model\Enums\addEstateEnum.cs" />
     <Compile Include="Model\Enums\ContractType.cs" />
     <Compile Include="Model\Enums\EstateType.cs" />
     <Compile Include="Model\Enums\Quality.cs" />
+    <Compile Include="Model\Estate.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\PersonQuality.cs" />
+    <Compile Include="Model\Photo.cs" />
+    <Compile Include="Tools\Base64StringToBitmapImageConverter.cs" />
+    <Compile Include="ViewModel\BaseCommand.cs" />
     <Compile Include="Tools\BaseNotifyPropertyChanged.cs" />
     <Compile Include="ViewModel\ViewModelContractEditor.cs" />
     <Compile Include="ViewModel\ViewModelPersonEditor.cs" />
@@ -262,10 +267,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Contract.cs" />
-    <Compile Include="Model\Estate.cs" />
-    <Compile Include="Model\Person.cs" />
-    <Compile Include="Model\Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -297,6 +298,7 @@
   <ItemGroup>
     <Resource Include="Resources\img\defaultPicture.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

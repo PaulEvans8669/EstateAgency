@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EstateManager.Model.Enums;
 using Microsoft.EntityFrameworkCore;
 using LiveCharts.Wpf;
-using EstateManager.Model.Enums;
 using LiveCharts.Defaults;
 using EstateManager.Tools;
+using EstateManager.Model;
 
 namespace EstateManager.ViewModel
 {
@@ -42,7 +41,7 @@ namespace EstateManager.ViewModel
 
                 new PieSeries
                 {
-                    Title = EstateType.House.ToString(),
+                    Title = Model.Enums.EstateType.House.ToString(),
                     DataLabels = true,
                     Values = new ChartValues<ObservableValue> { new ObservableValue(nbHouse()) }
                 }
@@ -50,7 +49,7 @@ namespace EstateManager.ViewModel
 
                 new PieSeries
                 {
-                    Title = EstateType.CommercialLocal.ToString(),
+                    Title = Model.Enums.EstateType.CommercialLocal.ToString(),
                     DataLabels = true,
                     Values = new ChartValues<ObservableValue> { new ObservableValue(nbCommercialLocal()) }
                 }
@@ -58,7 +57,7 @@ namespace EstateManager.ViewModel
 
                 new PieSeries
                 {
-                    Title = EstateType.Field.ToString(),
+                    Title = Model.Enums.EstateType.Field.ToString(),
                     DataLabels = true,
                     Values = new ChartValues<ObservableValue> { new ObservableValue(nbField()) }
                 }
@@ -66,7 +65,7 @@ namespace EstateManager.ViewModel
 
                 new PieSeries
                 {
-                    Title = EstateType.Flat.ToString(),
+                    Title = Model.Enums.EstateType.Flat.ToString(),
                     DataLabels = true,
                     Values = new ChartValues<ObservableValue> { new ObservableValue(nbFlat()) }
                 }
@@ -74,7 +73,7 @@ namespace EstateManager.ViewModel
 
                 new PieSeries
                 {
-                    Title = EstateType.Garage.ToString(),
+                    Title = Model.Enums.EstateType.Garage.ToString(),
                     DataLabels = true,
                     Values = new ChartValues<ObservableValue> { new ObservableValue(nbGarage()) }
                 }
@@ -82,7 +81,7 @@ namespace EstateManager.ViewModel
 
                 new PieSeries
                 {
-                    Title = EstateType.Other.ToString(),
+                    Title = Model.Enums.EstateType.Other.ToString(),
                     DataLabels = true,
                     Values = new ChartValues<ObservableValue> { new ObservableValue(nbOther()) }
                 }
@@ -95,7 +94,7 @@ namespace EstateManager.ViewModel
         {
             int nbHouse;
 
-            nbHouse = EstateDbContext.Current.Estate.Where(estate => estate.Type == EstateType.House).Count();
+            nbHouse = EstateDbContext.Current.Estate.Where(estate => estate.Type == Model.Enums.EstateType.House).Count();
 
             return nbHouse;
         }
@@ -104,7 +103,7 @@ namespace EstateManager.ViewModel
         {
             int nbFlat;
 
-            nbFlat = EstateDbContext.Current.Estate.Where(estate => estate.Type == EstateType.Flat).Count();
+            nbFlat = EstateDbContext.Current.Estate.Where(estate => estate.Type == Model.Enums.EstateType.Flat).Count();
 
             return nbFlat;
         }
@@ -113,7 +112,7 @@ namespace EstateManager.ViewModel
         {
             int nbGarage;
 
-            nbGarage = EstateDbContext.Current.Estate.Where(estate => estate.Type == EstateType.Garage).Count();
+            nbGarage = EstateDbContext.Current.Estate.Where(estate => estate.Type == Model.Enums.EstateType.Garage).Count();
 
             return nbGarage;
         }
@@ -122,7 +121,7 @@ namespace EstateManager.ViewModel
         {
             int nbField;
 
-            nbField = EstateDbContext.Current.Estate.Where(estate => estate.Type == EstateType.Field).Count();
+            nbField = EstateDbContext.Current.Estate.Where(estate => estate.Type == Model.Enums.EstateType.Field).Count();
 
             return nbField;
         }
@@ -131,7 +130,7 @@ namespace EstateManager.ViewModel
         {
             int nbCommercialLocal;
 
-            nbCommercialLocal = EstateDbContext.Current.Estate.Where(estate => estate.Type == EstateType.CommercialLocal).Count();
+            nbCommercialLocal = EstateDbContext.Current.Estate.Where(estate => estate.Type == Model.Enums.EstateType.CommercialLocal).Count();
 
             return nbCommercialLocal;
         }
@@ -140,7 +139,7 @@ namespace EstateManager.ViewModel
         {
             int nbOther;
 
-            nbOther = EstateDbContext.Current.Estate.Where(estate => estate.Type == EstateType.Other).Count();
+            nbOther = EstateDbContext.Current.Estate.Where(estate => estate.Type == Model.Enums.EstateType.Other).Count();
 
             return nbOther;
         }

@@ -57,9 +57,9 @@ namespace EstateManager.Migrations
 
                     b.Property<int>("EnergyEfficiency");
 
-                    b.Property<int>("FloorCount");
-
                     b.Property<int>("FloorNumber");
+
+                    b.Property<int>("FloorsCount");
 
                     b.Property<double?>("Latitude");
 

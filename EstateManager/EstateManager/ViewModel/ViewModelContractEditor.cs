@@ -70,7 +70,6 @@ namespace EstateManager.ViewModel
             Contract c = new Contract();
             c.CloseDate = CloseDate;
             c.Description = Description;
-            c.Estate = estate;
             c.EstateId = estate.Id;
             c.Price = Price;
             c.PubDate = DateTime.Now;
