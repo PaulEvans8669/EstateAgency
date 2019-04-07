@@ -26,9 +26,10 @@ namespace EstateManager.ViewModel
         public int NbOfRooms { get { return GetProperty<int>(); } set { SetProperty(value); } }
         public int FloorCount { get { return GetProperty<int>(); } set { SetProperty(value); } }
         public int FloorNumber { get { return GetProperty<int>(); } set { SetProperty(value); } }
-        public int Surface { get { return GetProperty<int>(); } set { SetProperty(value); } }
+        public float Surface { get { return GetProperty<float>(); } set { SetProperty(value); } }
         public int EnergyEfficiency { get { return GetProperty<int>(); } set { SetProperty(value); } }
         public Person Owner { get { return GetProperty<Person>(); } set { SetProperty(value); } }
+        private Estate es;
 
         public Photo SelectedPhoto
         {
@@ -46,6 +47,31 @@ namespace EstateManager.ViewModel
             loadPersonAsync();
             PhotoList = new ObservableCollection<Photo>();
             this.editor = editor;
+        }
+
+        public ViewModelEstateEditor(EstateEditor editor, Estate selectedEstate)
+        {
+            loadPersonAsync();
+            PhotoList = new ObservableCollection<Photo>();
+            this.editor = editor;
+            es = selectedEstate;
+            if (selectedEstate != null)
+            {
+                Estate = selectedEstate.Type;
+                Address = selectedEstate.Address;
+                ZIP = selectedEstate.Zip;
+                City = selectedEstate.City;
+                BuildDate = selectedEstate.BuildDate;
+                Latitude = selectedEstate.Latitude;
+                Longitude = selectedEstate.Longitude;
+                NbOfRooms = selectedEstate.RoomsCount;
+                FloorCount = selectedEstate.FloorsCount;
+                FloorNumber = selectedEstate.FloorNumber;
+                Surface = selectedEstate.Surface;
+                EnergyEfficiency = selectedEstate.EnergyEfficiency;
+                Owner = selectedEstate.Owner;
+
+            }
         }
 
         public async Task loadPersonAsync()
@@ -81,23 +107,44 @@ namespace EstateManager.ViewModel
         }
         public void saveAndClose()
         {
-            Estate estate = new Estate();
-            estate.Address = Address;
-            estate.BuildDate = BuildDate;
-            estate.City = City;
-            estate.EnergyEfficiency = EnergyEfficiency;
-            estate.FloorsCount = FloorCount;
-            estate.FloorNumber = FloorNumber;
-            estate.Latitude = Latitude;
-            estate.Longitude = Longitude;
-            //estate.OwnerId = OwnerId;
-            estate.RoomsCount = NbOfRooms;
-            estate.Surface = Surface;
-            estate.Type = Estate;
-            estate.Zip = ZIP;
+            if (es == null)
+            {
+                Estate estate = new Estate();
+                estate.Address = Address;
+                estate.BuildDate = BuildDate;
+                estate.City = City;
+                estate.EnergyEfficiency = EnergyEfficiency;
+                estate.FloorsCount = FloorCount;
+                estate.FloorNumber = FloorNumber;
+                estate.Latitude = Latitude;
+                estate.Longitude = Longitude;
+                estate.RoomsCount = NbOfRooms;
+                estate.Surface = Surface;
+                estate.OwnerId = Owner.Id;
+                estate.Type = Estate;
+                estate.Zip = ZIP;
 
-            EstateDbContext.Current.Add(estate);
+                EstateDbContext.Current.Add(estate);
+            }
+            else
+            {
+                es.Address = Address;
+                es.BuildDate = BuildDate;
+                es.City = City;
+                es.EnergyEfficiency = EnergyEfficiency;
+                es.FloorsCount = FloorCount;
+                es.FloorNumber = FloorNumber;
+                es.Latitude = Latitude;
+                es.Longitude = Longitude;
+                es.RoomsCount = NbOfRooms;
+                es.Surface = Surface;
+                es.OwnerId = Owner.Id;
+                es.Type = Estate;
+                es.Zip = ZIP;
 
+                EstateDbContext.Current.Update(es);
+            }
+            EstateDbContext.Current.SaveChanges();
             editor.Close();
 
         }
